@@ -504,7 +504,7 @@ void Preprocess::hesai_handler(const sensor_msgs::PointCloud2::ConstPtr &msg)
     std::vector<float> time_last(N_SCANS, 0.0);  // last offset time
     /*****************************************************************/
 
-    if (pl_orig.points[plsize - 1].timestamps > 0)
+    if (pl_orig.points[plsize - 1].timestamp > 0)
     {
       given_offset_time = true;
     }
@@ -544,7 +544,7 @@ void Preprocess::hesai_handler(const sensor_msgs::PointCloud2::ConstPtr &msg)
         added_pt.y = pl_orig.points[i].y;
         added_pt.z = pl_orig.points[i].z;
         added_pt.intensity = pl_orig.points[i].intensity;
-        added_pt.curvature = pl_orig.points[i].timestamps * time_unit_scale; // units: ms
+        added_pt.curvature = pl_orig.points[i].timestamp * time_unit_scale; // units: ms
 
         if (!given_offset_time)
         {
@@ -613,7 +613,7 @@ void Preprocess::hesai_handler(const sensor_msgs::PointCloud2::ConstPtr &msg)
         added_pt.y = pl_orig.points[i].y;
         added_pt.z = pl_orig.points[i].z;
         added_pt.intensity = pl_orig.points[i].intensity;
-        added_pt.curvature = pl_orig.points[i].timestamps * time_unit_scale;  // curvature unit: ms // cout<<added_pt.curvature<<endl;
+        added_pt.curvature = pl_orig.points[i].timestamp * time_unit_scale;  // curvature unit: ms // cout<<added_pt.curvature<<endl;
 
         if (!given_offset_time)
         {

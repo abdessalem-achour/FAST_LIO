@@ -60,7 +60,7 @@ namespace hesai_ros {
   struct EIGEN_ALIGN16 Point {
       PCL_ADD_POINT4D;
       float intensity;
-      float timestamps;
+      float timestamp;
       uint16_t ring;
       EIGEN_MAKE_ALIGNED_OPERATOR_NEW
   };
@@ -70,7 +70,7 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(hesai_ros::Point,
     (float, y, y)
     (float, z, z)
     (float, intensity, intensity)
-    (float, timestamps, timestamps)
+    (float, timestamp, timestamp)
     (uint16_t, ring, ring)
 )
 
