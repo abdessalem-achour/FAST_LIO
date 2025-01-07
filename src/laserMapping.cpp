@@ -35,7 +35,8 @@
 #include <omp.h>
 #include <mutex>
 #include <math.h>
-#include <thread>
+#include <boost/shared_ptr.hpp>  // For boost::shared_ptr
+#include <boost/thread.hpp>      // For boost::thread
 #include <fstream>
 #include <csignal>
 #include <unistd.h>
@@ -59,6 +60,7 @@
 #include <livox_ros_driver/CustomMsg.h>
 #include "preprocess.h"
 #include <ikd-Tree/ikd_Tree.h>
+
 
 #define INIT_TIME           (0.1)
 #define LASER_POINT_COV     (0.001)
@@ -137,8 +139,8 @@ nav_msgs::Odometry odomAftMapped;
 geometry_msgs::Quaternion geoQuat;
 geometry_msgs::PoseStamped msg_body_pose;
 
-shared_ptr<Preprocess> p_pre(new Preprocess());
-shared_ptr<ImuProcess> p_imu(new ImuProcess());
+boost::shared_ptr<Preprocess> p_pre(new Preprocess());
+boost::shared_ptr<ImuProcess> p_imu(new ImuProcess());
 
 void SigHandle(int sig)
 {
